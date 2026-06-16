@@ -1,73 +1,73 @@
-Home Team,Away Team,Pred Home Goals,Pred Away Goals,Home Win %,Away Win %,Draw %,Predicted Scoreline
-Mexico,South Africa,2.2,0.51,76.4,7.1,16.5,2-0
-South Korea,Czech Republic,1.47,0.97,48.6,25.0,26.4,1-0
-Canada,Bosnia and Herzegovina,2.04,0.63,70.4,10.5,19.2,2-0
-United States,Paraguay,1.18,1.24,34.9,37.6,27.5,1-1
-Australia,Turkey,1.09,1.33,30.5,42.2,27.3,1-1
-Haiti,Scotland,0.97,1.36,26.9,45.6,27.5,0-1
-Brazil,Morocco,1.47,1.06,46.6,27.2,26.2,1-1
-Qatar,Switzerland,0.61,1.87,11.5,67.4,21.1,0-1
-Germany,Curacao,2.75,0.57,82.8,5.3,11.9,2-0
-Ivory Coast,Ecuador,0.88,1.54,21.5,52.7,25.8,0-1
-Netherlands,Japan,1.32,1.04,43.1,29.4,27.6,1-1
-Sweden,Tunisia,1.22,1.09,38.9,32.8,28.3,1-1
-Belgium,Egypt,1.64,0.86,55.7,19.7,24.6,1-0
-Iran,New Zealand,1.5,0.78,54.3,19.5,26.2,1-0
-Spain,Cape Verde,2.72,0.5,83.7,4.7,11.6,2-0
-Saudi Arabia,Uruguay,0.81,1.66,18.1,57.6,24.3,0-1
-Iraq,Norway,0.9,1.54,22.2,52.1,25.7,0-1
-Argentina,Algeria,2.06,0.71,68.9,11.7,19.4,2-0
-Austria,Jordan,1.46,0.81,52.5,20.8,26.7,1-0
-France,Senegal,1.96,0.8,64.3,14.6,21.0,1-0
-Ghana,Panama,0.88,1.57,21.1,53.5,25.4,0-1
-England,Croatia,1.55,0.99,50.5,24.0,25.5,1-0
-Portugal,DR Congo,1.9,0.6,68.3,11.0,20.7,1-0
-Uzbekistan,Colombia,0.89,1.39,24.1,48.6,27.4,0-1
-Czech Republic,South Africa,1.69,0.85,57.2,18.8,24.0,1-0
-Mexico,South Korea,1.48,0.89,51.0,22.6,26.4,1-0
-Switzerland,Bosnia and Herzegovina,1.99,0.66,68.6,11.4,19.9,1-0
-Canada,Qatar,2.2,0.53,75.8,7.5,16.7,2-0
-United States,Australia,1.22,1.3,34.8,38.4,26.8,1-1
-Turkey,Paraguay,1.37,0.97,45.9,26.7,27.4,1-0
-Scotland,Morocco,0.98,1.51,24.6,49.5,25.9,0-1
-Brazil,Haiti,2.44,0.58,78.5,6.9,14.6,2-0
-Germany,Ivory Coast,1.93,0.75,65.1,13.8,21.1,1-0
-Ecuador,Curacao,2.75,0.55,83.1,5.1,11.8,2-0
-Netherlands,Sweden,2.17,0.73,70.4,11.2,18.4,2-0
-Tunisia,Japan,0.68,1.35,18.7,53.1,28.2,0-1
-Uruguay,Cape Verde,2.0,0.65,69.3,11.0,19.7,2-0
-Belgium,Iran,1.43,1.03,46.1,27.3,26.6,1-1
-New Zealand,Egypt,1.07,1.24,31.8,40.0,28.2,1-1
-Spain,Saudi Arabia,3.06,0.5,87.4,3.5,9.1,3-0
-Argentina,Austria,2.0,0.86,63.9,15.3,20.7,2-0
-Jordan,Algeria,1.03,1.35,28.5,44.1,27.4,1-1
-France,Iraq,2.34,0.54,78.0,6.8,15.3,2-0
-Norway,Senegal,1.27,1.13,39.7,32.7,27.6,1-1
-Colombia,DR Congo,1.87,0.61,67.5,11.4,21.1,1-0
-Portugal,Uzbekistan,1.81,0.83,60.5,16.8,22.7,1-0
-Panama,Croatia,1.02,1.42,27.1,46.2,26.8,1-1
-England,Ghana,3.01,0.51,86.6,3.8,9.6,3-0
-Scotland,Brazil,0.89,1.61,20.9,54.1,25.0,0-1
-Bosnia and Herzegovina,Qatar,1.36,0.88,47.9,24.3,27.8,1-0
-Morocco,Haiti,2.06,0.59,71.9,9.5,18.6,2-0
-South Africa,South Korea,0.88,1.53,21.7,52.5,25.8,0-1
-Mexico,Czech Republic,1.84,0.89,59.7,17.8,22.6,1-0
-Canada,Switzerland,1.28,1.12,40.1,32.4,27.6,1-1
-Curacao,Ivory Coast,0.79,1.57,18.9,55.7,25.4,0-1
-United States,Turkey,1.17,1.33,32.9,40.2,26.9,1-1
-Paraguay,Australia,1.23,1.16,38.0,34.3,27.7,1-1
-Japan,Sweden,1.84,0.72,63.8,14.2,22.0,1-0
-Tunisia,Netherlands,0.79,1.43,20.6,52.4,27.0,0-1
-Ecuador,Germany,1.24,1.23,36.7,36.2,27.2,1-1
-Norway,France,0.84,1.58,20.0,54.7,25.3,0-1
-Egypt,Iran,0.98,1.22,29.7,41.4,28.9,0-1
-New Zealand,Belgium,0.88,1.83,17.7,59.7,22.6,0-1
-Cape Verde,Saudi Arabia,1.17,1.24,34.6,37.8,27.6,1-1
-Uruguay,Spain,0.9,1.61,21.0,54.1,24.9,0-1
-Senegal,Iraq,1.61,0.74,58.1,17.1,24.8,1-0
-DR Congo,Uzbekistan,1.02,1.17,31.6,39.3,29.1,1-1
-Jordan,Argentina,0.65,2.13,10.0,71.6,18.3,0-2
-Colombia,Portugal,1.32,1.37,35.9,38.3,25.9,1-1
-Algeria,Austria,1.09,1.28,31.5,40.8,27.7,1-1
-Panama,England,0.84,1.48,21.3,52.3,26.4,0-1
-Croatia,Ghana,2.55,0.65,78.5,7.3,14.2,2-0
+Group,Home Team,Away Team,Pred Home Goals,Pred Away Goals,Home Win %,Away Win %,Draw %,Predicted Scoreline
+A,Mexico,South Africa,2.2,0.51,76.4,7.1,16.5,2-0
+A,South Korea,Czech Republic,1.47,0.97,48.6,25.0,26.4,1-0
+B,Canada,Bosnia and Herzegovina,2.04,0.63,70.4,10.5,19.2,2-0
+D,United States,Paraguay,1.18,1.24,34.9,37.6,27.5,1-1
+D,Australia,Turkey,1.09,1.33,30.5,42.2,27.3,1-1
+C,Haiti,Scotland,0.97,1.36,26.9,45.6,27.5,0-1
+C,Brazil,Morocco,1.47,1.06,46.6,27.2,26.2,1-1
+B,Qatar,Switzerland,0.61,1.87,11.5,67.4,21.1,0-1
+E,Germany,Curacao,2.75,0.57,82.8,5.3,11.9,2-0
+E,Ivory Coast,Ecuador,0.88,1.54,21.5,52.7,25.8,0-1
+F,Netherlands,Japan,1.32,1.04,43.1,29.4,27.6,1-1
+F,Sweden,Tunisia,1.22,1.09,38.9,32.8,28.3,1-1
+G,Belgium,Egypt,1.64,0.86,55.7,19.7,24.6,1-0
+G,Iran,New Zealand,1.5,0.78,54.3,19.5,26.2,1-0
+H,Spain,Cape Verde,2.72,0.5,83.7,4.7,11.6,2-0
+H,Saudi Arabia,Uruguay,0.81,1.66,18.1,57.6,24.3,0-1
+I,Iraq,Norway,0.9,1.54,22.2,52.1,25.7,0-1
+J,Argentina,Algeria,2.06,0.71,68.9,11.7,19.4,2-0
+J,Austria,Jordan,1.46,0.81,52.5,20.8,26.7,1-0
+I,France,Senegal,1.96,0.8,64.3,14.6,21.0,1-0
+L,Ghana,Panama,0.88,1.57,21.1,53.5,25.4,0-1
+L,England,Croatia,1.55,0.99,50.5,24.0,25.5,1-0
+K,Portugal,DR Congo,1.9,0.6,68.3,11.0,20.7,1-0
+K,Uzbekistan,Colombia,0.89,1.39,24.1,48.6,27.4,0-1
+A,Czech Republic,South Africa,1.69,0.85,57.2,18.8,24.0,1-0
+A,Mexico,South Korea,1.48,0.89,51.0,22.6,26.4,1-0
+B,Switzerland,Bosnia and Herzegovina,1.99,0.66,68.6,11.4,19.9,1-0
+B,Canada,Qatar,2.2,0.53,75.8,7.5,16.7,2-0
+D,United States,Australia,1.22,1.3,34.8,38.4,26.8,1-1
+D,Turkey,Paraguay,1.37,0.97,45.9,26.7,27.4,1-0
+C,Scotland,Morocco,0.98,1.51,24.6,49.5,25.9,0-1
+C,Brazil,Haiti,2.44,0.58,78.5,6.9,14.6,2-0
+E,Germany,Ivory Coast,1.93,0.75,65.1,13.8,21.1,1-0
+E,Ecuador,Curacao,2.75,0.55,83.1,5.1,11.8,2-0
+F,Netherlands,Sweden,2.17,0.73,70.4,11.2,18.4,2-0
+F,Tunisia,Japan,0.68,1.35,18.7,53.1,28.2,0-1
+H,Uruguay,Cape Verde,2.0,0.65,69.3,11.0,19.7,2-0
+G,Belgium,Iran,1.43,1.03,46.1,27.3,26.6,1-1
+G,New Zealand,Egypt,1.07,1.24,31.8,40.0,28.2,1-1
+H,Spain,Saudi Arabia,3.06,0.5,87.4,3.5,9.1,3-0
+J,Argentina,Austria,2.0,0.86,63.9,15.3,20.7,2-0
+J,Jordan,Algeria,1.03,1.35,28.5,44.1,27.4,1-1
+I,France,Iraq,2.34,0.54,78.0,6.8,15.3,2-0
+I,Norway,Senegal,1.27,1.13,39.7,32.7,27.6,1-1
+K,Colombia,DR Congo,1.87,0.61,67.5,11.4,21.1,1-0
+K,Portugal,Uzbekistan,1.81,0.83,60.5,16.8,22.7,1-0
+L,Panama,Croatia,1.02,1.42,27.1,46.2,26.8,1-1
+L,England,Ghana,3.01,0.51,86.6,3.8,9.6,3-0
+C,Scotland,Brazil,0.89,1.61,20.9,54.1,25.0,0-1
+B,Bosnia and Herzegovina,Qatar,1.36,0.88,47.9,24.3,27.8,1-0
+C,Morocco,Haiti,2.06,0.59,71.9,9.5,18.6,2-0
+A,South Africa,South Korea,0.88,1.53,21.7,52.5,25.8,0-1
+A,Mexico,Czech Republic,1.84,0.89,59.7,17.8,22.6,1-0
+B,Canada,Switzerland,1.28,1.12,40.1,32.4,27.6,1-1
+E,Curacao,Ivory Coast,0.79,1.57,18.9,55.7,25.4,0-1
+D,United States,Turkey,1.17,1.33,32.9,40.2,26.9,1-1
+D,Paraguay,Australia,1.23,1.16,38.0,34.3,27.7,1-1
+F,Japan,Sweden,1.84,0.72,63.8,14.2,22.0,1-0
+F,Tunisia,Netherlands,0.79,1.43,20.6,52.4,27.0,0-1
+E,Ecuador,Germany,1.24,1.23,36.7,36.2,27.2,1-1
+I,Norway,France,0.84,1.58,20.0,54.7,25.3,0-1
+G,Egypt,Iran,0.98,1.22,29.7,41.4,28.9,0-1
+G,New Zealand,Belgium,0.88,1.83,17.7,59.7,22.6,0-1
+H,Cape Verde,Saudi Arabia,1.17,1.24,34.6,37.8,27.6,1-1
+H,Uruguay,Spain,0.9,1.61,21.0,54.1,24.9,0-1
+I,Senegal,Iraq,1.61,0.74,58.1,17.1,24.8,1-0
+K,DR Congo,Uzbekistan,1.02,1.17,31.6,39.3,29.1,1-1
+J,Jordan,Argentina,0.65,2.13,10.0,71.6,18.3,0-2
+K,Colombia,Portugal,1.32,1.37,35.9,38.3,25.9,1-1
+J,Algeria,Austria,1.09,1.28,31.5,40.8,27.7,1-1
+L,Panama,England,0.84,1.48,21.3,52.3,26.4,0-1
+L,Croatia,Ghana,2.55,0.65,78.5,7.3,14.2,2-0

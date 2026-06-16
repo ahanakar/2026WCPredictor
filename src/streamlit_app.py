@@ -1,0 +1,97 @@
+import streamlit as st
+import pandas as pd
+
+st.set_page_config(page_title = "2026 World Cup Predictor", page_icon = "⚽", layout = 'centered')
+
+st.title("2026 World Cup Match Predictor")
+st.markdown("---------")
+
+@st.cache_data
+def load_data():
+    return pd.read_csv("../data/processed/groupstage_predictions_2026.csv")
+
+try:
+    df = load_data()
+except FileNotFoundError:
+    st.error("Error 404 hehe")
+    st.stop()
+
+flag_map = {
+    "Mexico": "mx", "South Africa": "za", "South Korea": "kr", "Czech Republic": "cz",
+    "Canada": "ca", "Bosnia and Herzegovina": "ba", "United States": "us", "Paraguay": "py",
+    "Australia": "au", "Turkey": "tr", "Haiti": "ht", "Scotland": "gb-sct", "Brazil": "br",
+    "Morocco": "ma", "Qatar": "qa", "Switzerland": "ch", "Germany": "de", "Curacao": "cw",
+    "Ivory Coast": "ci", "Ecuador": "ec", "Netherlands": "nl", "Japan": "jp", "Spain": "es",
+    "Saudi Arabia": "sa", "England": "gb-eng", "Ghana": "gh", "Cape Verde": "cv", "Argentina": "ar",
+    "Jordan": "jo", "Algeria": "dz", "France": "fr", "Iraq": "iq", "Norway": "no", "Senegal": "sn",
+    "Colombia": "co", "DR Congo": "cd", "Portugal": "pt", "Uzbekistan": "uz", "Panama": "pa",
+    "Croatia": "hr", "Austria": "at", "Iran": "ir", "Egypt": "eg", "Tunisia": "tn", "Sweden": "se",
+    "New Zealand": "nz", "Belgium": "be"
+}
+
+if 'Group' in df.columns:
+    groups = sorted(df['Group'].unique())
+    selected_group = st.sidebar.selectbox("Select a group: ", groups)
+    filtered_df = df[df['Group'] == selected_group]
+else:
+    st.sidebar.warning("Error. Showing all matches")
+    filtered_df = df
+
+match_options = [f"{row['Home Team']} vs {row['Away Team']}" for _, row in filtered_df.iterrows()]
+selected_match = st.selectbox("Select match: ", match_options)
+
+home_team, away_team = selected_match.split(" vs ")
+match_data = filtered_df[(filtered_df['Home Team'] == home_team) & (filtered_df['Away Team'] == away_team)].iloc[0]
+
+hw_p = match_data['Home Win %']
+aw_p = match_data['Away Win %']
+draw_p = match_data['Draw %']
+scoreline = match_data['Predicted Scoreline']
+
+col1, col2, col3 = st.columns([3, 1, 3])
+
+with col1:
+    h_code = flag_map.get(home_team, "un")
+    st.image(f"https://flagcdn.com/w160/{h_code}.png", width = 110)
+    st.subheader(home_team)
+    st.caption(f"Expected Goals: {match_data['Pred Home Goals']:.2f}")
+
+with col2:
+    st.markdown("<h2 style = 'text-align: center; color: gray; margin-top: 25px;'>VS</h2>", unsafe_allow_html = True)
+
+with col3:
+    a_code = flag_map.get(away_team, "un")
+    st.image(f"https://flagcdn.com/w160/{a_code}.png", width = 110)
+    st.subheader(away_team)
+    st.caption(f"Expected Goals: {match_data['Pred Away Goals']:.2f}")
+
+st.markdown("---------")
+
+st.write("Match Outcome")
+
+progress_html = f"""
+<div style="width: 100%; background-color: #f1f1f1; border-radius: 8px; display: flex; overflow: hidden; height: 35px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">
+  <div style="width: {hw_p}%; background-color: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{hw_p}%</div>
+  <div style="width: {draw_p}%; background-color: #757575; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{draw_p}%</div>
+  <div style="width: {aw_p}%; background-color: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{aw_p}%</div>
+</div>
+<div style="display: flex; justify-content: space-between; padding: 5px 5px 0px 5px; font-weight: 500; font-size: 12px; color: #424242;">
+  <span>🟢 {home_team} Win</span>
+  <span>⚪ Draw</span>
+  <span>🔵 {away_team} Win</span>
+</div>
+"""
+st.markdown(progress_html, unsafe_allow_html = True)
+st.markdown("<br>", unsafe_allow_html = True)
+
+score_home, score_away = map(int, scoreline.split("-"))
+
+if score_home > score_away:
+    verdict = f"**Predicted Result:** **{home_team} Win** ({scoreline})"
+    st.success(verdict)
+elif score_away > score_home:
+    verdict = f"**Predicted Result:** **{away_team} Win** ({scoreline})"
+    st.info(verdict)
+else:
+    verdict = f"**Predicted Result:** **Draw** ({scoreline})"
+    st.warning(verdict)
