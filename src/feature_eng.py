@@ -194,9 +194,8 @@ def run_feature_engineering():
     results_modern = pd.merge(results_modern, home_stats, on = ['date', 'home_team'], how = 'left')
     results_modern = pd.merge(results_modern, away_stats, on = ['date', 'away_team'], how = 'left')
 
-    pre_2022_baseline = results_modern[results_modern['date'].dt.year < 2022]
-    avg_home_scored = pre_2022_baseline['home_score'].dropna().mean()
-    avg_away_scored = pre_2022_baseline['away_score'].dropna().mean()
+    avg_home_scored = results_modern['home_score'].dropna().mean()
+    avg_away_scored = results_modern['away_score'].dropna().mean()
     results_modern['home_rolling_win_rate'] = results_modern['home_rolling_win_rate'].fillna(0.33)
     results_modern['away_rolling_win_rate'] = results_modern['away_rolling_win_rate'].fillna(0.33)
     results_modern['home_rolling_goals_scored'] = results_modern['home_rolling_goals_scored'].fillna(avg_home_scored)
@@ -228,22 +227,17 @@ def run_feature_engineering():
 
     all_non_null_matches = results_modern.dropna(subset=['home_score', 'away_score']).copy()
     future_fixtures = results_modern[results_modern['home_score'].isnull()].copy()
-    backtest_train = results_modern[results_modern['date'].dt.year < 2022].dropna(subset=['home_score', 'away_score']).copy()
-    backtest_test = all_non_null_matches[all_non_null_matches['date'].dt.year >= 2022].copy()
     main_train = all_non_null_matches.copy()
     main_test = future_fixtures.copy()
 
-    backtest_train.to_csv("../data/processed/backtest_train.csv", index = False)
-    backtest_test.to_csv("../data/processed/backtest_test.csv", index = False)
     main_train.to_csv("../data/processed/main_train.csv", index = False)
     if not main_test.empty:
-        main_test.to_csv("../data/processed/main_test_groupstage.csv", index = False)
-        print(f"Exported {len(main_test)} fixtures to main_test_groupstage.csv")
+        main_test.to_csv("../data/processed/main_test_ro32.csv", index = False)
+        print(f"Exported {len(main_test)} fixtures to main_test_ro32.csv")
     else:
-        print("No null values found to assign to main_test_groupstage.csv")
+        print("No null values found to assign to main_test_ro32.csv")
 
     print("Pipeline completed")
-    print(f"Backtest track: Train size -- {len(backtest_train)} | Test size -- {len(backtest_test)}")
     print(f"Main training size: {len(main_train)}")
 
 if __name__ == "__main__":
