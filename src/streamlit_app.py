@@ -7,13 +7,22 @@ st.title("2026 World Cup Match Predictor")
 st.markdown("---------")
 
 @st.cache_data
-def load_data():
+def load_groupstage_data():
     return pd.read_csv("../data/processed/groupstage_predictions_2026.csv")
 
+@st.cache_data
+def load_ro32_data():
+    return pd.read_csv("../data/processed/ro32_predictions_2026.csv")
+
+selected_round = st.sidebar.selectbox("Select Tournament Round:", ["Group Stage", "Round of 32"])
+
 try:
-    df = load_data()
+    if selected_round == "Group Stage":
+        df = load_groupstage_data()
+    else:
+        df = load_ro32_data()
 except FileNotFoundError:
-    st.error("Error 404 hehe")
+    st.error(f"Error 404: Prediction data file for {selected_round} not found.")
     st.stop()
 
 flag_map = {
@@ -29,12 +38,15 @@ flag_map = {
     "New Zealand": "nz", "Belgium": "be"
 }
 
-if 'Group' in df.columns:
-    groups = sorted(df['Group'].unique())
-    selected_group = st.sidebar.selectbox("Select a group: ", groups)
-    filtered_df = df[df['Group'] == selected_group]
+if selected_round == "Group Stage":
+    if 'Group' in df.columns:
+        groups = sorted(df['Group'].unique())
+        selected_group = st.sidebar.selectbox("Select a group: ", groups)
+        filtered_df = df[df['Group'] == selected_group]
+    else:
+        st.sidebar.warning("Error. Showing all matches")
+        filtered_df = df
 else:
-    st.sidebar.warning("Error. Showing all matches")
     filtered_df = df
 
 match_options = [f"{row['Home Team']} vs {row['Away Team']}" for _, row in filtered_df.iterrows()]
@@ -42,11 +54,6 @@ selected_match = st.selectbox("Select match: ", match_options)
 
 home_team, away_team = selected_match.split(" vs ")
 match_data = filtered_df[(filtered_df['Home Team'] == home_team) & (filtered_df['Away Team'] == away_team)].iloc[0]
-
-hw_p = match_data['Home Win %']
-aw_p = match_data['Away Win %']
-draw_p = match_data['Draw %']
-scoreline = match_data['Predicted Scoreline']
 
 col1, col2, col3 = st.columns([3, 1, 3])
 
@@ -67,31 +74,90 @@ with col3:
 
 st.markdown("---------")
 
-st.write("Match Outcome")
+if selected_round == "Group Stage":
+    hw_p = match_data['Home Win %']
+    aw_p = match_data['Away Win %']
+    draw_p = match_data['Draw %']
+    scoreline = match_data['Predicted Scoreline']
 
-progress_html = f"""
-<div style="width: 100%; background-color: #f1f1f1; border-radius: 8px; display: flex; overflow: hidden; height: 35px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">
-  <div style="width: {hw_p}%; background-color: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{hw_p}%</div>
-  <div style="width: {draw_p}%; background-color: #757575; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{draw_p}%</div>
-  <div style="width: {aw_p}%; background-color: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{aw_p}%</div>
-</div>
-<div style="display: flex; justify-content: space-between; padding: 5px 5px 0px 5px; font-weight: 500; font-size: 12px; color: #424242;">
-  <span>🟢 {home_team} Win</span>
-  <span>⚪ Draw</span>
-  <span>🔵 {away_team} Win</span>
-</div>
-"""
-st.markdown(progress_html, unsafe_allow_html = True)
-st.markdown("<br>", unsafe_allow_html = True)
+    st.write("### Match Outcome Probability")
+    progress_html = f"""
+    <div style="width: 100%; background-color: #f1f1f1; border-radius: 8px; display: flex; overflow: hidden; height: 35px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">
+      <div style="width: {hw_p}%; background-color: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{hw_p}%</div>
+      <div style="width: {draw_p}%; background-color: #757575; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{draw_p}%</div>
+      <div style="width: {aw_p}%; background-color: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">{aw_p}%</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 5px 5px 0px 5px; font-weight: 500; font-size: 12px; color: #424242;">
+      <span>🟢 {home_team} Win</span>
+      <span>⚪ Draw</span>
+      <span>🔵 {away_team} Win</span>
+    </div>
+    """
+    st.markdown(progress_html, unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
 
-score_home, score_away = map(int, scoreline.split("-"))
+    score_home, score_away = map(int, scoreline.split("-"))
+    if score_home > score_away:
+        st.success(f"**Predicted Result:** **{home_team} Win** ({scoreline})")
+    elif score_away > score_home:
+        st.info(f"**Predicted Result:** **{away_team} Win** ({scoreline})")
+    else:
+        st.warning(f"**Predicted Result:** **Draw** ({scoreline})")
 
-if score_home > score_away:
-    verdict = f"**Predicted Result:** **{home_team} Win** ({scoreline})"
-    st.success(verdict)
-elif score_away > score_home:
-    verdict = f"**Predicted Result:** **{away_team} Win** ({scoreline})"
-    st.info(verdict)
 else:
-    verdict = f"**Predicted Result:** **Draw** ({scoreline})"
-    st.warning(verdict)
+    hw_p = match_data['Home Win 90m %']
+    aw_p = match_data['Away Win 90m %']
+    draw_p = match_data['Draw 90m %']
+    scoreline = match_data['Predicted 90m Score']
+    team_to_advance = match_data['Team To Advance']
+    
+    tot_home_adv = match_data['Total Home Advance %']
+    tot_away_adv = match_data['Total Away Advance %']
+
+    st.write("### Tournament Advancement Verdict")
+    st.success(f"**{team_to_advance}** is predicted to advance to the next round (Combined Probability: **{max(tot_home_adv, tot_away_adv)}%**)")
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    col_left, col_right = st.columns(2)
+
+    with col_left:
+        st.write("#### Regulation Time (90m)")
+        st.write(f"**Most Likely Score:** `{scoreline}`")
+        
+        reg_html = f"""
+        <div style="width: 100%; background-color: #f1f1f1; border-radius: 6px; display: flex; overflow: hidden; height: 24px;">
+          <div style="width: {hw_p}%; background-color: #2E7D32; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">{hw_p}%</div>
+          <div style="width: {draw_p}%; background-color: #757575; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">{draw_p}%</div>
+          <div style="width: {aw_p}%; background-color: #1565C0; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">{aw_p}%</div>
+        </div>
+        """
+        st.markdown(reg_html, unsafe_allow_html=True)
+        st.caption(f"🟢 Win: {hw_p}% | ⚪ Draw: {draw_p}% | 🔵 Win: {aw_p}%")
+
+    with col_right:
+        st.write("#### Penalty Tie-Breaker")
+        
+        so_home_raw = match_data['Home Advance Shootout %']
+        so_away_raw = match_data['Away Advance Shootout %']
+        total_raw = so_home_raw + so_away_raw
+        
+        home_pure_so = (so_home_raw / total_raw) * 100 if total_raw > 0 else 50.0
+        away_pure_so = (so_away_raw / total_raw) * 100 if total_raw > 0 else 50.0
+        
+        st.write(f"**If match ends in a draw:**")
+        
+        so_html = f"""
+        <div style="width: 100%; background-color: #f1f1f1; border-radius: 6px; display: flex; overflow: hidden; height: 24px;">
+          <div style="width: {home_pure_so}%; background-color: #E65100; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">{home_pure_so:.1f}%</div>
+          <div style="width: {away_pure_so}%; background-color: #006064; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">{away_pure_so:.1f}%</div>
+        </div>
+        """
+        st.markdown(so_html, unsafe_allow_html=True)
+        st.caption(f"🟠 {home_team} penalty win: {home_pure_so:.1f}% | 🔵 {away_team} penalty win: {away_pure_so:.1f}%")
+
+    st.markdown("---")
+    st.caption(
+        f"**How this is calculated:** Even if the single most frequent scoreline coordinate is a draw (like `1-1`), "
+        f"the model assesses *all possible outcomes*. If a team has a significantly higher chance to finish the game "
+        f"inside the regular 90-minute window, their overall total advancement probability will often carry them through"
+    )
