@@ -232,10 +232,10 @@ def run_feature_engineering():
 
     main_train.to_csv("../data/processed/main_train.csv", index = False)
     if not main_test.empty:
-        main_test.to_csv("../data/processed/main_test_ro16.csv", index = False)
-        print(f"Exported {len(main_test)} fixtures to main_test_ro16.csv")
+        main_test.to_csv("../data/processed/main_test_quarters.csv", index = False)
+        print(f"Exported {len(main_test)} fixtures to main_test_quarters.csv")
     else:
-        print("No null values found to assign to main_test_ro16.csv")
+        print("No null values found to assign to main_test_quarters.csv")
 
     print("Pipeline completed")
     print(f"Main training size: {len(main_train)}")

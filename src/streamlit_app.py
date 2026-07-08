@@ -14,13 +14,25 @@ def load_groupstage_data():
 def load_ro32_data():
     return pd.read_csv("../data/processed/ro32_predictions_2026.csv")
 
-selected_round = st.sidebar.selectbox("Select Tournament Round:", ["Group Stage", "Round of 32"])
+@st.cache_data
+def load_ro16_data():
+    return pd.read_csv("../data/processed/ro16_predictions_2026.csv")
+
+@st.cache_data
+def load_quarters_data():
+    return pd.read_csv("../data/processed/quarterfinals_predictions_2026.csv")
+
+selected_round = st.sidebar.selectbox("Select Tournament Round:", ["Group Stage", "Round of 32", "Round of 16", "Quarter finals"])
 
 try:
     if selected_round == "Group Stage":
         df = load_groupstage_data()
-    else:
+    elif selected_round == "Round of 32":
         df = load_ro32_data()
+    elif selected_round == "Round of 16":
+        df = load_ro16_data()
+    else:
+        df = load_quarters_data()
 except FileNotFoundError:
     st.error(f"Error 404: Prediction data file for {selected_round} not found.")
     st.stop()
