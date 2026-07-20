@@ -21,22 +21,22 @@ def load_ro32_data():
 
 @st.cache_data
 def load_ro16_data():
-    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/ro16_predictions_2026.csv")
     return pd.read_csv(path)
 
 @st.cache_data
 def load_quarters_data():
-    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/quarterfinals_predictions_2026.csv")
     return pd.read_csv(path)
 
 @st.cache_data
 def load_semis_data():
-    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/semifinals_predictions_2026.csv")
     return pd.read_csv(path)
 
 @st.cache_data
 def load_finals_data():
-    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/finals_predictions_2026.csv")
     return pd.read_csv(path)
 
 selected_round = st.sidebar.selectbox("Select Tournament Round:", ["Group Stage", "Round of 32", "Round of 16", "Quarter finals", "Semi finals", "Finals"])
