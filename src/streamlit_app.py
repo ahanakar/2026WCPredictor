@@ -58,6 +58,8 @@ except FileNotFoundError:
     st.error(f"Error 404: Prediction data file for {selected_round} not found.")
     st.stop()
 
+st.write(df.columns)
+
 flag_map = {
     "Mexico": "mx", "South Africa": "za", "South Korea": "kr", "Czech Republic": "cz",
     "Canada": "ca", "Bosnia and Herzegovina": "ba", "United States": "us", "Paraguay": "py",
