@@ -1,34 +1,43 @@
 import streamlit as st
 import pandas as pd
+import os
 
 st.set_page_config(page_title = "2026 World Cup Predictor", page_icon = "⚽", layout = 'centered')
 
 st.title("2026 World Cup Match Predictor")
 st.markdown("---------")
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @st.cache_data
 def load_groupstage_data():
-    return pd.read_csv("../data/processed/groupstage_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_ro32_data():
-    return pd.read_csv("../data/processed/ro32_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/ro32_predictions_2026.csv")
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_ro16_data():
-    return pd.read_csv("../data/processed/ro16_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_quarters_data():
-    return pd.read_csv("../data/processed/quarterfinals_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_semis_data():
-    return pd.read_csv("../data/processed/semifinals_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    return pd.read_csv(path)
 
 @st.cache_data
 def load_finals_data():
-    return pd.read_csv("../data/processed/finals_predictions_2026.csv")
+    path = os.path.join(BASE_DIR, "../data/processed/groupstage_predictions_2026.csv")
+    return pd.read_csv(path)
 
 selected_round = st.sidebar.selectbox("Select Tournament Round:", ["Group Stage", "Round of 32", "Round of 16", "Quarter finals", "Semi finals", "Finals"])
 
