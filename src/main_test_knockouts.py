@@ -13,7 +13,7 @@ with open('../data/processed/shootouts_tendency.json', 'r') as f:
 def load_data():
     print("Loading required data for the Knockout Phase")
     train_path = '../data/processed/main_train.csv'
-    knockout_path = '../data/processed/main_test_quarters.csv'
+    knockout_path = '../data/processed/main_test_finals.csv'
     
     train_df = pd.read_csv(train_path)
     knockout_df = pd.read_csv(knockout_path)
@@ -87,7 +87,7 @@ def generate_predictions():
     lgb_home.fit(X_train, y_train_home, sample_weight = w_train)
     lgb_away.fit(X_train, y_train_away, sample_weight = w_train)
 
-    print("Simulating 2026 Knockout Phase (Quarter finals)")
+    print("Simulating 2026 Knockout Phase (Semi finals)")
     results = []
     xgb_h_lambdas = xgb_home.predict(X_knockout)
     xgb_a_lambdas = xgb_away.predict(X_knockout)
@@ -133,7 +133,7 @@ def generate_predictions():
         })
 
     predictions_df = pd.DataFrame(results)
-    output_path = "../data/processed/quarterfinals_predictions_2026.csv"
+    output_path = "../data/processed/finals_predictions_2026.csv"
     predictions_df.to_csv(output_path, index = False)
     print(f"Saved knockout progression predictions to {output_path}")
 
